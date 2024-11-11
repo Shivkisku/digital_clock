@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #6E7F77, #A1C4FD);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    margin: 0;
+    overflow: hidden;
+}
+
+.clock {
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent background */
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* soft shadow */
+    padding: 40px;
+    text-align: center;
+    animation: fadeIn 2s ease-out;
+}
+
+#time {
+    font-size: 80px; /* Big clock digits */
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-family: 'Digital-7', sans-serif; /* Digital font */
+    animation: pulse 1.5s infinite; /* Pulse animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
