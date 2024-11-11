@@ -1,39 +1,27 @@
-// Mapping English digits to Olchiki digits
-const olchikiDigits = ["᱐", "᱑", "᱒", "᱓", "᱔", "᱕", "᱖", "᱗", "᱘", "᱙"];
-
-// Function to convert a number to Olchiki
-function toOlchiki(num) {
-    return num.toString().split('').map(digit => olchikiDigits[parseInt(digit)]).join('');
+function startTime() {
+    const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML = convertToHindiDigits(h) + ":" + convertToHindiDigits(m) + ":" + convertToHindiDigits(s);
+    setTimeout(startTime, 1000);
 }
 
-// Function to update the clock with time
-function updateClock() {
-    const now = new Date();
-
-    // Get hours, minutes, and seconds
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let seconds = now.getSeconds();
-
-    // Format time to always display two digits
-    hours = hours < 10 ? '0' + hours : hours;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-
-    // Convert the digits of time to Olchiki
-    hours = toOlchiki(hours);
-    minutes = toOlchiki(minutes);
-    seconds = toOlchiki(seconds);
-
-    // Combine time
-    const time = `${hours}:${minutes}:${seconds}`;
-
-    // Update the clock with the new time
-    document.getElementById('time').textContent = time;
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;  // add zero in front of numbers < 10
+    }
+    return i;
 }
 
-// Initialize the clock and update every second
-setInterval(updateClock, 1000);
+function convertToHindiDigits(num) {
+    const hindiDigits = ["᱐", "᱑", "᱒", "᱓", "᱔", "᱕", "᱖", "᱗", "᱘", "᱙"];
+    return num.toString().split('').map(digit => hindiDigits[parseInt(digit)]).join('');
+}
 
-// Initialize the clock when the page loads
-updateClock();
+function myFunction() {
+    var element = document.body;
+    element.classList.toggle("dark-mode");
+}
